@@ -1,11 +1,12 @@
 {
   "name": "react-password-strength",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A password strength indicator field for use in React projects",
   "main": "dist/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
-    "example": "./node_modules/.bin/webpack-dev-server --content-base example/"
+    "build-watch": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
+    "example": "./node_modules/.bin/webpack-dev-server --content-base example/",
+    "prepublish": "./node_modules/.bin/webpack --config=webpack.build.config.js"
   },
   "repository": {
     "type": "git",
