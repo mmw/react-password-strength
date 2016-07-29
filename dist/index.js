@@ -60,6 +60,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	__webpack_require__(1);
@@ -79,27 +81,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	var ReactPasswordStrength = function (_React$Component) {
 	  _inherits(ReactPasswordStrength, _React$Component);
 
-	  function ReactPasswordStrength() {
+	  function ReactPasswordStrength(props) {
 	    _classCallCheck(this, ReactPasswordStrength);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactPasswordStrength).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReactPasswordStrength).call(this, props));
+
+	    _this.state = {
+	      score: 0
+	    };
+	    return _this;
 	  }
 
 	  _createClass(ReactPasswordStrength, [{
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      var score = this.refs["ReactPasswordStrength-input"].value.length;
+
+	      this.setState({
+	        score: score > 4 ? 4 : score
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var score = this.state.score;
+	      var _props = this.props;
+	      var scoreWords = _props.scoreWords;
+	      var inputProps = _props.inputProps;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'ReactPasswordStrength' },
-	        _react2.default.createElement('input', {
+	        _react2.default.createElement('input', _extends({
 	          className: 'ReactPasswordStrength-input',
-	          placeholder: this.props.inputProps.placeholder,
+	          onChange: this.handleChange.bind(this),
+	          ref: 'ReactPasswordStrength-input',
 	          type: 'password'
-	        }),
+	        }, inputProps)),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'ReactPasswordStrength-strength' },
-	          'Weak'
+	          { className: 'ReactPasswordStrength-strength is-strength-' + score },
+	          scoreWords[score]
 	        )
 	      );
 	    }
@@ -112,7 +135,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	ReactPasswordStrength.propTypes = {
-	  inputProps: _react2.default.PropTypes.object
+	  inputProps: _react2.default.PropTypes.object,
+	  scoreWords: _react2.default.PropTypes.array
+	};
+
+	ReactPasswordStrength.defaultProps = {
+	  scoreWords: ['Weak', 'Weak', 'Okay', 'Good', 'Strong']
 	};
 
 /***/ },
@@ -150,7 +178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".ReactPasswordStrength {  }\n\n.ReactPasswordStrength-input {\n  box-sizing: border-box;\n  border: 1px solid #a6a6a6;\n  font-size: 16px;\n  padding: 8px 12px;\n  margin-bottom: 7px;\n  width: 100%;\n}\n\n.ReactPasswordStrength-strength {\n  background: red;\n  box-sizing: border-box;\n  padding: 6px 8px;\n  width: 15%;\n}\n", ""]);
+	exports.push([module.id, ".ReactPasswordStrength {\n  box-sizing: border-box;\n  color: #111;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n}\n\n.ReactPasswordStrength-input {\n  box-sizing: border-box;\n  border: 1px solid #a6a6a6;\n  font-size: 18px;\n  padding: 14px 12px;\n  margin-bottom: 7px;\n  width: 100%;\n}\n\n.ReactPasswordStrength-input:focus {\n  border-color: #00798C;\n  outline: none;\n}\n\n.ReactPasswordStrength-strength {\n  box-sizing: border-box;\n  padding: 6px 8px;\n  transition: width 300ms ease-out;\n}\n\n.is-strength-0 {\n  background: #D1462F;\n  width: 20%;\n}\n\n.is-strength-1 {\n  background: #D1462F;\n  width: 40%;\n}\n\n.is-strength-2 {\n  background: #ED7D3A;\n  width: 60%;\n}\n\n.is-strength-3 {\n  background: #ED7D3A;\n  width: 80%;\n}\n\n.is-strength-4 {\n  background: #2FBF71;\n  width: 100%;\n}\n", ""]);
 
 	// exports
 

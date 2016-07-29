@@ -1,17 +1,50 @@
-.ReactPasswordStrength {  }
+.ReactPasswordStrength {
+  box-sizing: border-box;
+  color: #111;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 .ReactPasswordStrength-input {
   box-sizing: border-box;
   border: 1px solid #a6a6a6;
-  font-size: 16px;
-  padding: 8px 12px;
+  font-size: 18px;
+  padding: 14px 12px;
   margin-bottom: 7px;
   width: 100%;
 }
 
+.ReactPasswordStrength-input:focus {
+  border-color: #00798C;
+  outline: none;
+}
+
 .ReactPasswordStrength-strength {
-  background: red;
   box-sizing: border-box;
   padding: 6px 8px;
-  width: 15%;
+  transition: width 300ms ease-out;
+}
+
+.is-strength-0 {
+  background: #D1462F;
+  width: 20%;
+}
+
+.is-strength-1 {
+  background: #D1462F;
+  width: 40%;
+}
+
+.is-strength-2 {
+  background: #ED7D3A;
+  width: 60%;
+}
+
+.is-strength-3 {
+  background: #ED7D3A;
+  width: 80%;
+}
+
+.is-strength-4 {
+  background: #2FBF71;
+  width: 100%;
 }
