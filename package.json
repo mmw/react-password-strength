@@ -1,0 +1,38 @@
+{
+  "name": "react-password-strength",
+  "version": "0.1.0",
+  "description": "A password strength indicator field for use in React projects",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
+    "example": "./node_modules/.bin/webpack-dev-server --content-base example/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmw/react-password-strength.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Mateusz Wijas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmw/react-password-strength/issues"
+  },
+  "homepage": "https://github.com/mmw/react-password-strength#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "peerDependencies": {
+    "react-dom": "^15.2.1"
+  }
+}

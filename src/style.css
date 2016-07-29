@@ -1,0 +1,17 @@
+.ReactPasswordStrength {  }
+
+.ReactPasswordStrength-input {
+  box-sizing: border-box;
+  border: 1px solid #a6a6a6;
+  font-size: 16px;
+  padding: 8px 12px;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.ReactPasswordStrength-strength {
+  background: red;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  width: 15%;
+}
