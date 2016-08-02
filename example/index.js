@@ -10,7 +10,8 @@ const inputProps = {
 
 ReactDOM.render(
   <div>
-    <label htmlFor="inputPassword">Password</label>
+    <h1>React Password Strength Tool</h1>
+    <p>Powered by <a href="https://github.com/dropbox/zxcvbn" target="_blank">zxcvbn</a></p>
     <ReactPasswordStrength inputProps={inputProps} />
   </div>,
   document.getElementById("example")
