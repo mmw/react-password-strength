@@ -72,7 +72,7 @@ ReactPasswordStrength.propTypes = {
 
 ReactPasswordStrength.defaultProps = {
   changeCallback: null,
-  minLength: 0,
+  minLength: 5,
   minScore: 2,
   scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
 };
