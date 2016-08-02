@@ -2,6 +2,7 @@ import './style.css';
 
 import React from 'react';
 import classnames from 'classnames';
+import zxcvbn from 'zxcvbn';
 
 export default class ReactPasswordStrength extends React.Component {
   constructor(props) {
@@ -14,15 +15,20 @@ export default class ReactPasswordStrength extends React.Component {
     };
   }
 
+  checkValidity(score, length) {
+    const { minScore, minLength } = this.props;
+    return score >= minScore && length >= minLength;
+  }
+
   handleChange(e) {
-    const password = this.refs['ReactPasswordStrength-input'].value;
-    const score = password.length;
     const changeCallback = this.props.changeCallback;
+    const password = this.refs['ReactPasswordStrength-input'].value;
+    const { score } = zxcvbn(password);
 
     this.setState({
-      isValid: score > this.props.minLength,
+      isValid: this.checkValidity(score, password.length),
       password,
-      score: score > 4 ? 4 : score,
+      score,
     });
 
     if (changeCallback !== null) {
@@ -61,11 +67,13 @@ ReactPasswordStrength.propTypes = {
   changeCallback: React.PropTypes.func,
   inputProps: React.PropTypes.object,
   minLength: React.PropTypes.number,
+  minScore: React.PropTypes.number,
   scoreWords: React.PropTypes.array,
 };
 
 ReactPasswordStrength.defaultProps = {
   changeCallback: null,
-  minLength: 5,
+  minLength: 0,
+  minScore: 2,
   scoreWords: ['Weak', 'Weak', 'Okay', 'Good', 'Strong'],
 };
