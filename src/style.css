@@ -1,53 +1,66 @@
 .ReactPasswordStrength {
+  border: 1px solid #c6c6c6;
   box-sizing: border-box;
   color: #090809;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  position: relative;
 }
 
 .ReactPasswordStrength-input {
+  border: none;
   box-sizing: border-box;
-  border: 1px solid #a6a6a6;
   font-size: 18px;
+  padding: 14px 0 12px 14px;
+  width: calc(85% - 28px);
+}
+
+.ReactPasswordStrength-input:not(:focus).is-password-invalid { color: #D1462F; }
+.ReactPasswordStrength-input:focus { outline: none; }
+
+.ReactPasswordStrength-strength-desc {
+  font-style: italic;
   padding: 14px 12px;
-  margin-bottom: 7px;
-  width: 100%;
+  position: absolute; top: 1px; right: 0;
+  text-align: right;
+  width: 15%;
 }
 
-.ReactPasswordStrength-input.is-password-valid { border-color: #2FBF71; }
-.ReactPasswordStrength-input.is-password-invalid { border-color: #D1462F; }
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-desc { color: #D1462F; }
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-desc { color: #D1462F; }
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-desc { color: #57B8FF; }
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-desc { color: #57B8FF; }
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-desc { color: #2FBF71; }
 
-.ReactPasswordStrength-input:focus {
-  border-color: #57B8FF;
-  outline: none;
-}
-
-.ReactPasswordStrength-strength {
+.ReactPasswordStrength-strength-bar {
   box-sizing: border-box;
-  padding: 6px 8px;
+  position: relative; top: 1px; right: 1px;
+  height: 2px;
   transition: width 300ms ease-out;
 }
 
-.ReactPasswordStrength-strength.is-strength-0 {
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-bar {
   background: #D1462F;
   width: 20%;
 }
 
-.ReactPasswordStrength-strength.is-strength-1 {
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-bar {
   background: #D1462F;
   width: 40%;
 }
 
-.ReactPasswordStrength-strength.is-strength-2 {
-  background: #ED7D3A;
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-bar {
+  background: #57B8FF;
   width: 60%;
 }
 
-.ReactPasswordStrength-strength.is-strength-3 {
-  background: #ED7D3A;
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-bar {
+  background: #57B8FF;
   width: 80%;
 }
 
-.ReactPasswordStrength-strength.is-strength-4 {
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-bar {
   background: #2FBF71;
-  width: 100%;
+  width: calc(100% + 2px);
 }

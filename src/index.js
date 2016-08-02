@@ -45,7 +45,7 @@ export default class ReactPasswordStrength extends React.Component {
     });
 
     return (
-      <div className="ReactPasswordStrength">
+      <div className={`ReactPasswordStrength is-strength-${score}`}>
         <input
           className={inputClasses}
           onChange={this.handleChange.bind(this)}
@@ -55,9 +55,8 @@ export default class ReactPasswordStrength extends React.Component {
           {...inputProps}
         />
 
-        <div className={`ReactPasswordStrength-strength is-strength-${score}`}>
-          {scoreWords[score]}
-        </div>
+        <div className="ReactPasswordStrength-strength-bar" />
+        <span className="ReactPasswordStrength-strength-desc">{scoreWords[score]}</span>
       </div>
     );
   }
@@ -75,5 +74,5 @@ ReactPasswordStrength.defaultProps = {
   changeCallback: null,
   minLength: 0,
   minScore: 2,
-  scoreWords: ['Weak', 'Weak', 'Okay', 'Good', 'Strong'],
+  scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
 };
