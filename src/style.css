@@ -1,6 +1,6 @@
 .ReactPasswordStrength {
   box-sizing: border-box;
-  color: #111;
+  color: #090809;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -13,8 +13,11 @@
   width: 100%;
 }
 
+.ReactPasswordStrength-input.is-password-valid { border-color: #2FBF71; }
+.ReactPasswordStrength-input.is-password-invalid { border-color: #D1462F; }
+
 .ReactPasswordStrength-input:focus {
-  border-color: #00798C;
+  border-color: #57B8FF;
   outline: none;
 }
 
@@ -24,27 +27,27 @@
   transition: width 300ms ease-out;
 }
 
-.is-strength-0 {
+.ReactPasswordStrength-strength.is-strength-0 {
   background: #D1462F;
   width: 20%;
 }
 
-.is-strength-1 {
+.ReactPasswordStrength-strength.is-strength-1 {
   background: #D1462F;
   width: 40%;
 }
 
-.is-strength-2 {
+.ReactPasswordStrength-strength.is-strength-2 {
   background: #ED7D3A;
   width: 60%;
 }
 
-.is-strength-3 {
+.ReactPasswordStrength-strength.is-strength-3 {
   background: #ED7D3A;
   width: 80%;
 }
 
-.is-strength-4 {
+.ReactPasswordStrength-strength.is-strength-4 {
   background: #2FBF71;
   width: 100%;
 }
