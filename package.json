@@ -1,6 +1,6 @@
 {
   "name": "react-password-strength",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "description": "A password strength indicator field for use in React projects",
   "main": "dist/index.js",
   "scripts": {
