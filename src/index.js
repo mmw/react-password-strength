@@ -48,11 +48,11 @@ export default class ReactPasswordStrength extends React.Component {
       <div className={`ReactPasswordStrength is-strength-${score}`}>
         <input
           className={inputClasses}
+          type="password"
+          {...inputProps}
           onChange={this.handleChange.bind(this)}
           ref="ReactPasswordStrength-input"
-          type="password"
           value={password}
-          {...inputProps}
         />
 
         <div className="ReactPasswordStrength-strength-bar" />

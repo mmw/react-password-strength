@@ -51,7 +51,8 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 #### inputProps
 
 - Props to pass down to the `input` element of the component. Things like `name`, `id`, etc
-- Note that passing down `className` or other props used by the component will be overwritten and may cause unintended outcomes with React Password Strength
+- Passing down `className` will overwrite the default classes
+- Protected props `onChange`, `ref`, and `value` cannot be overwritten and will be ignored if passed in `inputProps`
 
 ### Classes
 
