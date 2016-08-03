@@ -1,5 +1,5 @@
 # React Password Strength
-A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
+A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score. _NOTE: zxcvbn is a large library it's recommended to load react-password-strength with [react-proxy](https://github.com/gaearon/react-proxy) or a similar tool to manage bundle size._
 
 ## Install in your project
 
@@ -19,9 +19,9 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 <ReactPasswordStrength
   minLength={5}
   minScore={2}
-  scoreWords={['weak', okay', 'good', 'strong', 'stronger']}
+  scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
   changeCallback={foo}
-  inputProps={{ name="password_input" }}
+  inputProps={{ name: "password_input", autocomplete: "off" }}
 />
 ```
 
