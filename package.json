@@ -5,10 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build-watch": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
+    "example-build": "./node_modules/.bin/webpack --config=webpack.config.js",
+    "example-publish": "git subtree push --prefix example origin gh-pages",
     "example": "./node_modules/.bin/webpack-dev-server --content-base example/",
     "prepublish": "./node_modules/.bin/webpack --config=webpack.build.config.js",
-    "start": "npm run example & npm run build-watch",
-    "example-publish": "./node_modules/.bin/webpack --config=webpack.config.js && git subtree push --prefix example origin gh-pages"
+    "start": "npm run example & npm run build-watch"
   },
   "repository": {
     "type": "git",
