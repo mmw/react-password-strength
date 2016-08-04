@@ -29,11 +29,11 @@ export default class ReactPasswordStrength extends React.Component {
       isValid: this.checkValidity(score, password.length),
       password,
       score,
+    }, function() {
+      if (changeCallback !== null) {
+        changeCallback(this.state);
+      }
     });
-
-    if (changeCallback !== null) {
-      changeCallback(this.state);
-    }
   }
 
   render() {
