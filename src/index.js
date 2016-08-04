@@ -39,13 +39,20 @@ export default class ReactPasswordStrength extends React.Component {
   render() {
     const { score, password, isValid } = this.state;
     const { scoreWords, inputProps, minLength } = this.props;
+
+    // hack because template literals can't be used as strings in objects for some reason
+    const strengthClass = `is-strength-${score}`;
+    const conditionalClasses = {};
+    conditionalClasses[strengthClass] = password.length > 0;
+
+    const wrapperClasses = classnames(`ReactPasswordStrength` , conditionalClasses);
     const inputClasses = classnames('ReactPasswordStrength-input', {
       'is-password-valid': isValid,
       'is-password-invalid': isValid === false && password.length > 0,
     });
 
     return (
-      <div className={`ReactPasswordStrength is-strength-${score}`}>
+      <div className={wrapperClasses}>
         <input
           className={inputClasses}
           type="password"

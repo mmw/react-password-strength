@@ -20,10 +20,12 @@
 .ReactPasswordStrength-input:focus { outline: none; }
 
 .ReactPasswordStrength-strength-desc {
+  color: transparent;
   font-style: italic;
   padding: 14px 12px;
   position: absolute; top: 1px; right: 0;
   text-align: right;
+  transition: color 250ms ease-in-out;
   width: 15%;
 }
 
@@ -35,9 +37,10 @@
 
 .ReactPasswordStrength-strength-bar {
   box-sizing: border-box;
-  position: relative; top: 1px; right: 1px;
   height: 2px;
+  position: relative; top: 1px; right: 1px;
   transition: width 300ms ease-out;
+  width: 0;
 }
 
 .ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-bar {
