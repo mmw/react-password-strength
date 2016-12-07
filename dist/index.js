@@ -114,7 +114,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'clear',
 	    value: function clear() {
+	      this.setState({
+	        score: 0,
+	        isValid: false,
+	        password: ''
+	      });
 	      this.refs['ReactPasswordStrength-input'].value = '';
+	      this.forceUpdate();
 	    }
 	  }, {
 	    key: 'handleChange',

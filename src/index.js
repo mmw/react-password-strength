@@ -21,7 +21,13 @@ export default class ReactPasswordStrength extends React.Component {
   }
   
   clear() {
+    this.setState({
+      score: 0,
+      isValid: false,
+      password: ''
+    });
     this.refs['ReactPasswordStrength-input'].value = '';
+    this.forceUpdate();
   }
 
   handleChange(e) {
