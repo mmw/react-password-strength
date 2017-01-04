@@ -64,3 +64,9 @@ _All styling is applied with CSS classes to allow custom styling and overriding.
 - `is-password-invalid` - modifier class indicating invalid password (only applies if password length > 0)
 - `ReactPasswordStrength-strength-bar` - color bar indicating password strength
 - `ReactPasswordStrength-strength-desc` - text indicating password strength
+
+
+### Functions
+
+_Access through `ref` handle of ReactPasswordStrength._
+- `clear` - reset password field to initial state
