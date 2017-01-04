@@ -22,6 +22,27 @@
         display: inline-block;
         margin-bottom: 10px;
       }
+
+      button {
+        background: #fff;
+        border: 1px solid #6e6e6e;
+        color: #6e6e6e;
+        font-size: 16px;
+        padding: 5px 8px;
+        margin-top: 10px;
+        opacity: 1;
+        transition: opacity 250ms ease-in-out;
+      }
+
+      button:hover,
+      button:focus {
+        cursor: pointer;
+        outline: none;
+      }
+
+      button:disabled {
+        opacity: 0;
+      }
     </style>
   </head>
 
