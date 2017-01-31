@@ -1,5 +1,8 @@
-# React Password Strength
-A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score. _NOTE: zxcvbn is a large library it's recommended to load react-password-strength with [react-proxy](https://github.com/gaearon/react-proxy) or a similar tool to manage bundle size._
+# React Password Strength ![build status](https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master)
+
+A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
+
+_NOTE: zxcvbn is a large library it's recommended to load react-password-strength with [react-proxy](https://github.com/gaearon/react-proxy) or a similar tool to manage bundle size._
 
 [Try it live!](https://mmw.github.io/react-password-strength/)
 
