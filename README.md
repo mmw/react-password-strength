@@ -1,4 +1,4 @@
-# React Password Strength ![build status](https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master)
+# React Password Strength ![build status](https://codeship.com/projects/0fd512b0-c9f6-0134-86e7-125925b29f4b/status?branch=master)
 
 A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
 
