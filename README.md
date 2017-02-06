@@ -22,6 +22,8 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 
 ```
 <ReactPasswordStrength
+  className="customStyling"
+  style={{ display: 'none' }}
   minLength={5}
   minScore={2}
   scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
@@ -31,6 +33,14 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 ```
 
 ### Props
+
+#### ClassName
+
+- ClassName to render with default container classes
+
+#### Style
+
+- Style object to customize container
 
 #### minLength (Default: 5)
 

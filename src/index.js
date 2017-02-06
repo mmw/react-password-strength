@@ -16,7 +16,7 @@ export default class ReactPasswordStrength extends React.Component {
   }
 
   clear() {
-    const changeCallback = this.props.changeCallback;
+    const { changeCallback } = this.props;
 
     this.setState({
       score: 0,
@@ -37,7 +37,7 @@ export default class ReactPasswordStrength extends React.Component {
   }
 
   handleChange(e) {
-    const changeCallback = this.props.changeCallback;
+    const { changeCallback } = this.props;
     const password = this.refs['ReactPasswordStrength-input'].value;
     const { score } = zxcvbn(password);
 
