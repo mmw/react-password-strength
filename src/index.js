@@ -54,21 +54,22 @@ export default class ReactPasswordStrength extends React.Component {
 
   render() {
     const { score, password, isValid } = this.state;
-    const { scoreWords, inputProps, minLength } = this.props;
+    const { scoreWords, inputProps, minLength, className, style } = this.props;
 
     // hack because template literals can't be used as strings in objects for some reason
     const strengthClass = `is-strength-${score}`;
     const conditionalClasses = {};
     conditionalClasses[strengthClass] = password.length > 0;
+    conditionalClasses[className] = className !== '';
 
-    const wrapperClasses = classnames(`ReactPasswordStrength` , conditionalClasses);
+    const wrapperClasses = classnames(`ReactPasswordStrength`, conditionalClasses);
     const inputClasses = classnames('ReactPasswordStrength-input', {
       'is-password-valid': isValid,
       'is-password-invalid': isValid === false && password.length > 0,
     });
 
     return (
-      <div className={wrapperClasses}>
+      <div className={wrapperClasses} style={style}>
         <input
           className={inputClasses}
           type="password"
@@ -87,14 +88,17 @@ export default class ReactPasswordStrength extends React.Component {
 
 ReactPasswordStrength.propTypes = {
   changeCallback: React.PropTypes.func,
+  className: React.PropTypes.string,
   inputProps: React.PropTypes.object,
   minLength: React.PropTypes.number,
   minScore: React.PropTypes.number,
   scoreWords: React.PropTypes.array,
+  style: React.PropTypes.object,
 };
 
 ReactPasswordStrength.defaultProps = {
   changeCallback: null,
+  className: '',
   minLength: 5,
   minScore: 2,
   scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],

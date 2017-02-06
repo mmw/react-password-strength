@@ -36,6 +36,21 @@ describe('ReactPasswordStrength', () => {
     expect(children[0].props.className).toBe('test');
     expect(children[0].props.value).not.toBe('value-test');
   });
+
+  it('accepts className prop', () => {
+    renderer.render(<PassStrength className="testClassName" />);
+    const result = renderer.getRenderOutput();
+
+    expect(result.props.className).toContain("testClassName");
+    expect(result.props.className).toContain("ReactPasswordStrength");
+  });
+
+  it('accepts style prop', () => {
+    renderer.render(<PassStrength style={{ margin: "10px" }} />);
+    const result = renderer.getRenderOutput();
+
+    expect(result.props.style.margin).toBe("10px");
+  });
 });
 
 describe('ReactPasswordStrength Events', () => {
