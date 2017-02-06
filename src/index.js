@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import zxcvbn from 'zxcvbn';
 
 export default class ReactPasswordStrength extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       score: 0,
