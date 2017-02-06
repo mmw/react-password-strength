@@ -35,6 +35,16 @@ export default class ReactPasswordStrength extends React.Component {
     const { minScore, minLength } = this.props;
     return score >= minScore && length >= minLength;
   }
+  
+  clear() {
+    this.setState({
+      score: 0,
+      isValid: false,
+      password: ''
+    });
+    this.refs['ReactPasswordStrength-input'].value = '';
+    this.forceUpdate();
+  }
 
   handleChange(e) {
     const { changeCallback } = this.props;
