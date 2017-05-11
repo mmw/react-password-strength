@@ -28,7 +28,7 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
   minScore={2}
   scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
   changeCallback={foo}
-  inputProps={{ name: "password_input", autocomplete: "off" }}
+  inputProps={{ name: "password_input", autoComplete: "off" }}
 />
 ```
 
