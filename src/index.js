@@ -3,6 +3,7 @@ import './style.css';
 import React from 'react';
 import classnames from 'classnames';
 import zxcvbn from 'zxcvbn';
+import PropTypes from 'prop-types';
 
 export default class ReactPasswordStrength extends React.Component {
   constructor() {
@@ -87,13 +88,13 @@ export default class ReactPasswordStrength extends React.Component {
 }
 
 ReactPasswordStrength.propTypes = {
-  changeCallback: React.PropTypes.func,
-  className: React.PropTypes.string,
-  inputProps: React.PropTypes.object,
-  minLength: React.PropTypes.number,
-  minScore: React.PropTypes.number,
-  scoreWords: React.PropTypes.array,
-  style: React.PropTypes.object,
+  changeCallback: PropTypes.func,
+  className: PropTypes.string,
+  inputProps: PropTypes.object,
+  minLength: PropTypes.number,
+  minScore: PropTypes.number,
+  scoreWords: PropTypes.array,
+  style: PropTypes.object,
 };
 
 ReactPasswordStrength.defaultProps = {

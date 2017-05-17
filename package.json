@@ -37,18 +37,19 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.8.0",
-    "react": "^15.2.1",
+    "react": "^15.5.0",
     "react-addons-test-utils": "^15.4.1",
-    "react-dom": "^15.2.1",
+    "react-dom": "^15.5.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "peerDependencies": {
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.5.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "prop-types": "^15.5.10",
     "zxcvbn": "^4.3.0"
   }
 }
