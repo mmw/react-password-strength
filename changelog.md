@@ -1,3 +1,9 @@
+# v1.2.0
+* ac90c9a Changes to support use in universal apps (fixes #29) (#31)
+* 77398d0 "Warning: Accessing PropTypes via the main React package is deprecated" fixed (#35)
+* 274d6e8 Convert autocomplete to camelcase (#34)
+* cfa2dcd Update README.md
+
 # v1.1.0
 * e0b6c3d move testing deps to devDependencies (#26)
 * 7e9dacd Pass props to container (#25)
