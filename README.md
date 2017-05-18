@@ -2,7 +2,7 @@
 
 A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
 
-_NOTE: zxcvbn is a large library it's recommended to use code splitting to manage bundle size._
+_NOTE: zxcvbn is a large library it's recommended you split the codebase to manage bundle size._
 
 [Try it live!](https://mmw.github.io/react-password-strength/)
 
@@ -22,7 +22,7 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 
 ```
 <ReactPasswordStrength
-  className="customStyling"
+  className="customClass"
   style={{ display: 'none' }}
   minLength={5}
   minScore={2}
@@ -31,6 +31,18 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
   inputProps={{ name: "password_input", autoComplete: "off" }}
 />
 ```
+
+### Importing
+
+If using ES6 imports:
+`import ReactPasswordStrength from 'react-password-strength';`
+
+Using CommonJS require:
+`var ReactPasswordStrength = require('react-password-strength');`
+
+Using in a Universal JS App (server-side rendering):
+- `import ReactPasswordStrength from 'react-password-strength/dist/universal';`
+- Include default styling from `react-password-strength/dist/style.css`.
 
 ### Props
 
