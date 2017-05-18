@@ -1,3 +1,6 @@
+# v1.2.1
+* fix bad npm publish
+
 # v1.2.0
 * ac90c9a Changes to support use in universal apps (fixes #29) (#31)
 * 77398d0 "Warning: Accessing PropTypes via the main React package is deprecated" fixed (#35)
