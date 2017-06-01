@@ -4,7 +4,7 @@ import {
   findRenderedDOMComponentWithClass,
   renderIntoDocument,
   Simulate,
-} from 'react-addons-test-utils';
+} from 'react-dom/test-utils';
 
 import PassStrength from '../src/index';
 
@@ -33,7 +33,7 @@ describe('ReactPasswordStrength', () => {
     const result = renderer.getRenderOutput();
     const { children } = result.props;
 
-    expect(children[0].props.className).toBe('test');
+    expect(children[0].props.className).toBe('ReactPasswordStrength-input test');
     expect(children[0].props.value).not.toBe('value-test');
   });
 
@@ -130,5 +130,20 @@ describe('ReactPasswordStrength Events', () => {
     expect(result.state.password).toBe('123');
     expect(result.state.score).toBe(0);
     expect(result.state.isValid).toBe(true);
+  })
+
+  it('invalidates too short passwords', () => {
+    const result = renderIntoDocument(<PassStrength minScore={2} minLength={7} />);
+    let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
+
+    // this normally gives a good zxcvbn score but must fail
+    // regardless of that because it does not meet the min length
+    input.value = '~=0o%';
+
+    Simulate.change(input);
+
+    expect(result.state.password).toBe('~=0o%');
+    expect(result.state.score).toBe(0);
+    expect(result.state.isValid).toBe(false);
   })
 });

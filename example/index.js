@@ -24,6 +24,7 @@ class App extends React.Component {
       placeholder: "Try a password...",
       id: "inputPassword",
       autoFocus: true,
+      className: 'another-input-prop-class-name',
     };
 
     return (
@@ -32,6 +33,7 @@ class App extends React.Component {
         <p>Powered by <a href="https://github.com/dropbox/zxcvbn" target="_blank">zxcvbn</a></p>
         <ReactPasswordStrength
           ref="passComponent"
+          minLength={6}
           inputProps={inputProps}
           changeCallback={this.changeCallback.bind(this)}
         />
