@@ -68,7 +68,7 @@ Using in a Universal JS App (server-side rendering):
 
 - An array denoting the words used to describe respective score values in the UI
 
-#### tooShortWort (Default: 'too short')
+#### tooShortWord (Default: 'too short')
 
 - A string to describe when password is too short (based on minLength prop).
 
@@ -80,9 +80,9 @@ Using in a Universal JS App (server-side rendering):
 #### inputProps
 
 - Props to pass down to the `input` element of the component. Things like `name`, `id`, etc
-- Passing down `className` will overwrite the default classes
-- Passing down `className` instead will just amend to the default input classes
-- Protected props `onChange`, `ref`, and `value` cannot be overwritten and will be ignored if passed in `inputProps`
+- Protected props: `className`, `onChange`, `ref`, `value`
+  - Passing in `className` will amend to the existing classes
+  - The remaining props will be ignored
 
 ### Classes
 
