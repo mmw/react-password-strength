@@ -26,6 +26,7 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
   style={{ display: 'none' }}
   minLength={5}
   minScore={2}
+  as={input}
   scoreWords={['weak', 'okay', 'good', 'strong', 'stronger']}
   changeCallback={foo}
   inputProps={{ name: "password_input", autoComplete: "off", className: "form-control" }}
@@ -71,6 +72,10 @@ Using in a Universal JS App (server-side rendering):
 #### tooShortWord (Default: 'too short')
 
 - A string to describe when password is too short (based on minLength prop).
+
+#### as (Default: input)
+
+- The base element included inside the ReactPasswordStrengh container.
 
 #### changeCallback
 
