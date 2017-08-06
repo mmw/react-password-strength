@@ -21,8 +21,6 @@ export default class ReactPasswordStrength extends React.Component {
       isValid: false,
       password: '',
     }, () => {
-      this.refs['ReactPasswordStrength-input'].value = '';
-
       if (changeCallback !== null) {
         changeCallback(this.state);
       }
@@ -35,7 +33,7 @@ export default class ReactPasswordStrength extends React.Component {
 
   handleChange(e) {
     const { changeCallback, minScore } = this.props;
-    const password = this.refs['ReactPasswordStrength-input'].value;
+    const password = e.target.value;
 
     let score;
 
@@ -71,6 +69,8 @@ export default class ReactPasswordStrength extends React.Component {
       tooShortWord
     } = this.props;
 
+    const ElementType = this.props.as ? this.props.as : 'input'
+
     const wrapperClasses = [
       'ReactPasswordStrength',
       className ? className : '',
@@ -99,15 +99,13 @@ export default class ReactPasswordStrength extends React.Component {
 
     return (
       <div className={wrapperClasses.join(' ')} style={style}>
-        <input
+        <ElementType
           type="password"
           {...inputProps}
           className={inputClasses.join(' ')}
           onChange={this.handleChange.bind(this)}
-          ref="ReactPasswordStrength-input"
           value={password}
         />
-
         <div className="ReactPasswordStrength-strength-bar" />
         <span className="ReactPasswordStrength-strength-desc">{strengthDesc}</span>
       </div>

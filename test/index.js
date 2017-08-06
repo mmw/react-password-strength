@@ -23,6 +23,20 @@ describe('ReactPasswordStrength', () => {
     expect(children[2].props.className).toBe('ReactPasswordStrength-strength-desc');
   });
 
+  it('use as prop for subelem', () => {
+    const Input = () => (
+      <input className="testAs"/>
+    )
+    renderer.render(<PassStrength as={Input}/>);
+    const result = renderer.getRenderOutput();
+    const { children } = result.props;
+    expect(result.type).toBe('div');
+
+    expect(typeof(children[0].type)).toBe('function');
+    expect(children[0].type().type).toBe('input');
+    expect(children[0].type().props.className).toBe('testAs');
+  });
+
   it('passes inputProps to input elem', () => {
     const inputProps = {
       className: 'test',
