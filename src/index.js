@@ -34,7 +34,7 @@ export default class ReactPasswordStrength extends React.Component {
   }
 
   handleChange(e) {
-    const { changeCallback, minScore } = this.props;
+    const { changeCallback, minScore, userInputs } = this.props;
     const password = this.refs['ReactPasswordStrength-input'].value;
 
     let score;
@@ -44,7 +44,7 @@ export default class ReactPasswordStrength extends React.Component {
     if (this.isTooShort(password)) {
       score = 0;
     } else {
-      score = zxcvbn(password).score;
+      score = zxcvbn(password, userInputs).score;
     }
 
     this.setState({
@@ -124,6 +124,7 @@ ReactPasswordStrength.propTypes = {
   scoreWords: PropTypes.array,
   tooShortWord: PropTypes.string,
   style: PropTypes.object,
+  userInputs: PropTypes.array,
 };
 
 ReactPasswordStrength.defaultProps = {
@@ -133,4 +134,5 @@ ReactPasswordStrength.defaultProps = {
   minScore: 2,
   scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
   tooShortWord: 'too short',
+  userInputs: [],
 };

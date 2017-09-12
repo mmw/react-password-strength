@@ -146,4 +146,18 @@ describe('ReactPasswordStrength Events', () => {
     expect(result.state.score).toBe(0);
     expect(result.state.isValid).toBe(false);
   })
+
+  it('gives a low score to words in userInputs', () => {
+    const knownKeyword = 'longwordthatiscommon';
+    const result = renderIntoDocument(<PassStrength minScore={2} userInputs={[knownKeyword]} />);
+    let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
+
+    input.value = knownKeyword;
+
+    Simulate.change(input);
+
+    expect(result.state.password).toBe(knownKeyword);
+    expect(result.state.score).toBe(0);
+    expect(result.state.isValid).toBe(false);
+  })
 });
