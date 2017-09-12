@@ -84,6 +84,10 @@ Using in a Universal JS App (server-side rendering):
   - Passing in `className` will amend to the existing classes
   - The remaining props will be ignored
 
+#### userInputs
+
+- An array of strings that zxcvbn will treat as an extra dictionary.
+
 ### Classes
 
 _All styling is applied with CSS classes to allow custom styling and overriding._
