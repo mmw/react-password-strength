@@ -1,0 +1,69 @@
+.ReactPasswordStrength {
+  border: 1px solid #c6c6c6;
+  box-sizing: border-box;
+  color: #090809;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  position: relative;
+}
+
+.ReactPasswordStrength-input {
+  border: none;
+  box-sizing: border-box;
+  font-size: 18px;
+  padding: 14px 0 12px 14px;
+  width: calc(85% - 28px);
+}
+
+.ReactPasswordStrength-input:not(:focus).is-password-invalid { color: #D1462F; }
+.ReactPasswordStrength-input:focus { outline: none; }
+
+.ReactPasswordStrength-strength-desc {
+  color: transparent;
+  font-style: italic;
+  padding: 14px 12px;
+  position: absolute; top: 1px; right: 0;
+  text-align: right;
+  transition: color 250ms ease-in-out;
+  width: 15%;
+}
+
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-desc { color: #D1462F; }
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-desc { color: #D1462F; }
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-desc { color: #57B8FF; }
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-desc { color: #57B8FF; }
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-desc { color: #2FBF71; }
+
+.ReactPasswordStrength-strength-bar {
+  box-sizing: border-box;
+  height: 2px;
+  position: relative; top: 1px; right: 1px;
+  transition: width 300ms ease-out;
+  width: 0;
+}
+
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-bar {
+  background: #D1462F;
+  width: 20%;
+}
+
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-bar {
+  background: #D1462F;
+  width: 40%;
+}
+
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-bar {
+  background: #57B8FF;
+  width: 60%;
+}
+
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-bar {
+  background: #57B8FF;
+  width: 80%;
+}
+
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-bar {
+  background: #2FBF71;
+  width: calc(100% + 2px);
+}
