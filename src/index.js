@@ -45,10 +45,11 @@ export default class ReactPasswordStrength extends React.Component {
     // which avoids unnecessary zxcvbn computations (they require quite lots of CPU)
     if (this.isTooShort(password)) {
       score = 0;
+      feedback = {};
     } else {
       const result = zxcvbn(password, userInputs);
       score = result.score;
-      feedback= result.feedback;
+      feedback = result.feedback;
     }
 
     this.setState({
