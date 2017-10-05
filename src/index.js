@@ -9,7 +9,7 @@ export default class ReactPasswordStrength extends React.Component {
     this.state = {
       score: 0,
       isValid: false,
-      password: ''
+      password: '',
     };
   }
 
@@ -19,7 +19,7 @@ export default class ReactPasswordStrength extends React.Component {
     this.setState({
       score: 0,
       isValid: false,
-      password: ''
+      password: '',
     }, () => {
       this.refs['ReactPasswordStrength-input'].value = '';
 
@@ -50,7 +50,7 @@ export default class ReactPasswordStrength extends React.Component {
     this.setState({
       isValid: score >= minScore,
       password,
-      score
+      score,
     }, function() {
       if (changeCallback !== null) {
         changeCallback(this.state, result);
