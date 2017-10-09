@@ -75,7 +75,9 @@ Using in a Universal JS App (server-side rendering):
 #### changeCallback
 
 - Callback after input has changed (and score was recomputed)
-- React Password Strength passes an object with the current app state (`score`, `password`, `isValid`) to the callback function
+- React Password Strength passes two objects to the callback function:
+    - current app state (`score`, `password`, `isValid`)
+    - full result produced by [zxcvbn](https://github.com/dropbox/zxcvbn) including `feedback` (see docs for more properties)
 
 #### inputProps
 

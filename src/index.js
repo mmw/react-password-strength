@@ -37,14 +37,14 @@ export default class ReactPasswordStrength extends React.Component {
     const { changeCallback, minScore, userInputs } = this.props;
     const password = this.refs['ReactPasswordStrength-input'].value;
 
-    let score;
+    let score = 0;
+    let result = null;
 
     // always sets a zero score when min length requirement is not met
     // which avoids unnecessary zxcvbn computations (they require quite lots of CPU)
-    if (this.isTooShort(password)) {
-      score = 0;
-    } else {
-      score = zxcvbn(password, userInputs).score;
+    if (!this.isTooShort(password)) {
+      result = zxcvbn(password, userInputs);
+      score = result.score;
     }
 
     this.setState({
@@ -53,7 +53,7 @@ export default class ReactPasswordStrength extends React.Component {
       score,
     }, function() {
       if (changeCallback !== null) {
-        changeCallback(this.state);
+        changeCallback(this.state, result);
       }
     });
   }
