@@ -97,7 +97,7 @@ describe('ReactPasswordStrength Events', () => {
       score: 0,
       isValid: false,
       password: '123',
-    });
+    }, null);
   });
 
   it('reset state on clear', () => {
