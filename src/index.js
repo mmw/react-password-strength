@@ -21,7 +21,7 @@ export default class ReactPasswordStrength extends React.Component {
       isValid: false,
       password: '',
     }, () => {
-      this.refs['ReactPasswordStrength-input'].value = '';
+      this.reactPasswordStrengthInput.value = '';
 
       if (changeCallback !== null) {
         changeCallback(this.state);
@@ -35,7 +35,7 @@ export default class ReactPasswordStrength extends React.Component {
 
   handleChange(e) {
     const { changeCallback, minScore, userInputs } = this.props;
-    const password = this.refs['ReactPasswordStrength-input'].value;
+    const password = this.reactPasswordStrengthInput.value;
 
     let score = 0;
     let result = null;
@@ -104,7 +104,7 @@ export default class ReactPasswordStrength extends React.Component {
           {...inputProps}
           className={inputClasses.join(' ')}
           onChange={this.handleChange.bind(this)}
-          ref="ReactPasswordStrength-input"
+          ref={(ref) => this.reactPasswordStrengthInput = ref}
           value={password}
         />
 
