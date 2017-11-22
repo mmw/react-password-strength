@@ -3,14 +3,22 @@ import zxcvbn from 'zxcvbn';
 import PropTypes from 'prop-types';
 
 export default class ReactPasswordStrength extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       score: 0,
       isValid: false,
-      password: '',
+      password: props.defaultValue,
     };
+  }
+
+  componentDidMount() {
+    const {password} = this.state;
+
+    if (password) { // If a defaultValue was set, call handleChange after mounting
+      this.handleChange();
+    }
   }
 
   clear() {
@@ -125,6 +133,7 @@ ReactPasswordStrength.propTypes = {
   tooShortWord: PropTypes.string,
   style: PropTypes.object,
   userInputs: PropTypes.array,
+  defaultValue: PropTypes.string,
 };
 
 ReactPasswordStrength.defaultProps = {
@@ -135,4 +144,5 @@ ReactPasswordStrength.defaultProps = {
   scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
   tooShortWord: 'too short',
   userInputs: [],
+  defaultValue: '',
 };
