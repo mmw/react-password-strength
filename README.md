@@ -86,6 +86,10 @@ Using in a Universal JS App (server-side rendering):
   - Passing in `className` will amend to the existing classes
   - The remaining props will be ignored
 
+#### defaultValue
+
+- A default value to set for the password field. If a non-empty string is provided the `changeCallback` will be called in `componentDidMount`.
+
 #### userInputs
 
 - An array of strings that zxcvbn will treat as an extra dictionary.
