@@ -4,13 +4,13 @@
   "description": "A password strength indicator field for use in React projects",
   "main": "dist/index.js",
   "scripts": {
-    "build-watch": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
     "build-module": "./node_modules/.bin/webpack --config=webpack.build.config.js",
+    "build-prod": "npm run build-module -p & npm run build-universal-module -p",
     "build-universal-module": "./node_modules/.bin/webpack --config=webpack.universal.config.js",
+    "build-watch": "./node_modules/.bin/webpack --config=webpack.build.config.js --watch",
     "example-build": "./node_modules/.bin/webpack --config=webpack.config.js",
     "example-publish": "git subtree push --prefix example origin gh-pages",
     "example": "./node_modules/.bin/webpack-dev-server --content-base example/",
-    "prepublish": "npm run build-module -p & npm run build-universal-module -p",
     "start": "npm run example & npm run build-watch",
     "test": "./node_modules/karma/bin/karma start"
   },
