@@ -1,3 +1,5 @@
+import './style.css';
+
 import React, { Component } from 'react';
 import zxcvbn from 'zxcvbn';
 import PropTypes from 'prop-types';
@@ -85,8 +87,6 @@ export default class ReactPasswordStrength extends Component {
   }
 
   render() {
-    require('./style.css');
-
     const { score, password, isValid } = this.state;
     const {
       scoreWords,
