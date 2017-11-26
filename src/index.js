@@ -1,27 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import zxcvbn from 'zxcvbn';
 import PropTypes from 'prop-types';
 
-export default class ReactPasswordStrength extends React.Component {
-  constructor(props) {
-    super(props);
+const isTooShort = (password, minLength) => password.length < minLength;
 
-    this.state = {
-      score: 0,
-      isValid: false,
-      password: props.defaultValue,
-    };
+export default class ReactPasswordStrength extends Component {
+  static propTypes = {
+    changeCallback: PropTypes.func,
+    className: PropTypes.string,
+    defaultValue: PropTypes.string,
+    inputProps: PropTypes.object,
+    minLength: PropTypes.number,
+    minScore: PropTypes.number,
+    scoreWords: PropTypes.array,
+    style: PropTypes.object,
+    tooShortWord: PropTypes.string,
+    userInputs: PropTypes.array,
+  }
+
+  static defaultProps = {
+    changeCallback: null,
+    className: '',
+    defaultValue: '',
+    minLength: 5,
+    minScore: 2,
+    scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
+    tooShortWord: 'too short',
+    userInputs: [],
+  }
+
+  state = {
+    score: 0,
+    isValid: false,
+    password: '',
   }
 
   componentDidMount() {
-    const {password} = this.state;
+    const { defaultValue } = this.props;
 
-    if (password) { // If a defaultValue was set, call handleChange after mounting
-      this.handleChange();
+    if (defaultValue.length > 0) {
+      this.setState({ password: defaultValue }, this.handleChange);
     }
   }
 
-  clear() {
+  clear = () => {
     const { changeCallback } = this.props;
 
     this.setState({
@@ -37,20 +59,16 @@ export default class ReactPasswordStrength extends React.Component {
     });
   }
 
-  isTooShort(password) {
-    return password.length < this.props.minLength;
-  }
-
-  handleChange(e) {
-    const { changeCallback, minScore, userInputs } = this.props;
+  handleChange = () => {
+    const { changeCallback, minScore, userInputs, minLength } = this.props;
     const password = this.reactPasswordStrengthInput.value;
 
     let score = 0;
     let result = null;
 
     // always sets a zero score when min length requirement is not met
-    // which avoids unnecessary zxcvbn computations (they require quite lots of CPU)
-    if (!this.isTooShort(password)) {
+    // avoids unnecessary zxcvbn computations (CPU intensive)
+    if (isTooShort(password, minLength) === false) {
       result = zxcvbn(password, userInputs);
       score = result.score;
     }
@@ -59,7 +77,7 @@ export default class ReactPasswordStrength extends React.Component {
       isValid: score >= minScore,
       password,
       score,
-    }, function() {
+    }, () => {
       if (changeCallback !== null) {
         changeCallback(this.state, result);
       }
@@ -70,22 +88,26 @@ export default class ReactPasswordStrength extends React.Component {
     require('./style.css');
 
     const { score, password, isValid } = this.state;
-
     const {
       scoreWords,
       inputProps,
       className,
       style,
-      tooShortWord
+      tooShortWord,
+      minLength,
     } = this.props;
 
+    const inputClasses = [ 'ReactPasswordStrength-input' ];
     const wrapperClasses = [
       'ReactPasswordStrength',
       className ? className : '',
-      password.length > 0 ? `is-strength-${score}` : ''
+      password.length > 0 ? `is-strength-${score}` : '',
     ];
-
-    const inputClasses = [ 'ReactPasswordStrength-input' ];
+    const strengthDesc = (
+      isTooShort(password, minLength)
+      ? tooShortWord
+      : scoreWords[score]
+    );
 
     if (isValid === true) {
       inputClasses.push('is-password-valid');
@@ -97,22 +119,14 @@ export default class ReactPasswordStrength extends React.Component {
       inputClasses.push(inputProps.className);
     }
 
-    let strengthDesc;
-
-    if (this.isTooShort(password)) {
-      strengthDesc = tooShortWord;
-    } else {
-      strengthDesc = scoreWords[score];
-    }
-
     return (
       <div className={wrapperClasses.join(' ')} style={style}>
         <input
           type="password"
           {...inputProps}
           className={inputClasses.join(' ')}
-          onChange={this.handleChange.bind(this)}
-          ref={(ref) => this.reactPasswordStrengthInput = ref}
+          onChange={this.handleChange}
+          ref={ref => this.reactPasswordStrengthInput = ref}
           value={password}
         />
 
@@ -122,27 +136,3 @@ export default class ReactPasswordStrength extends React.Component {
     );
   }
 }
-
-ReactPasswordStrength.propTypes = {
-  changeCallback: PropTypes.func,
-  className: PropTypes.string,
-  inputProps: PropTypes.object,
-  minLength: PropTypes.number,
-  minScore: PropTypes.number,
-  scoreWords: PropTypes.array,
-  tooShortWord: PropTypes.string,
-  style: PropTypes.object,
-  userInputs: PropTypes.array,
-  defaultValue: PropTypes.string,
-};
-
-ReactPasswordStrength.defaultProps = {
-  changeCallback: null,
-  className: '',
-  minLength: 5,
-  minScore: 2,
-  scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
-  tooShortWord: 'too short',
-  userInputs: [],
-  defaultValue: '',
-};

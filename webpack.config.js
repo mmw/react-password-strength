@@ -2,19 +2,19 @@ module.exports = {
   entry: './example/index.js',
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/example'
+    path: __dirname + '/example',
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      include: [/example/, /dist/],
-      loader: 'babel',
+      loader: 'babel-loader',
+      include: /example/,
       query: {
-        presets: ['es2015', 'react']
-      }
-    }]
+        presets: ['react', 'es2015', 'stage-2'],
+      },
+    }],
   },
   resolve: {
-    extensions: ['', '.js']
-  }
+    extensions: ['.js'],
+  },
 }

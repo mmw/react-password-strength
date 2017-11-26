@@ -10,7 +10,10 @@ module.exports = function(config) {
     singleRun: true,
 
     basePath: '',
-    files: ['test/*.js'],
+    files: [
+      'node_modules/es6-shim/es6-shim.js',
+      'test/*.js',
+    ],
     exclude: [],
 
     browsers: ['PhantomJS'],
@@ -21,21 +24,22 @@ module.exports = function(config) {
     },
 
     webpack: {
+      entry: './src/index.js',
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.js$/,
             include: [/src/, /test/],
-            loader: 'babel',
+            loader: 'babel-loader',
             query: {
-              presets: ['es2015', 'react']
-            }
+              presets: ['react', 'es2015', 'stage-2'],
+            },
           }, {
             test: /\.css$/,
-            loader: "style-loader!css-loader"
-          }
-        ]
-      }
+            use: ["style-loader", "css-loader"],
+          },
+        ],
+      },
     },
     webpackMiddleware: {
       state: 'errors-only'
