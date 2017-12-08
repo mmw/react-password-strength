@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  createRenderer,
   findRenderedDOMComponentWithClass,
+  findRenderedDOMComponentWithTag,
   renderIntoDocument,
   Simulate,
 } from 'react-dom/test-utils';
@@ -9,18 +9,15 @@ import {
 import PassStrength from '../src/index';
 
 describe('ReactPasswordStrength', () => {
-  const renderer = createRenderer();
-
   it('is rendered', () => {
-    renderer.render(<PassStrength />);
-    const result = renderer.getRenderOutput();
-    const { children } = result.props;
+    const render = renderIntoDocument(<PassStrength />);
+    const result = findRenderedDOMComponentWithClass(render, 'ReactPasswordStrength');
+    const strengthBar = findRenderedDOMComponentWithClass(render, 'ReactPasswordStrength-strength-bar');
+    const description = findRenderedDOMComponentWithClass(render, 'ReactPasswordStrength-strength-desc');
 
-    expect(result.type).toBe('div');
-
-    expect(children[0].type).toBe('input');
-    expect(children[1].props.className).toBe('ReactPasswordStrength-strength-bar');
-    expect(children[2].props.className).toBe('ReactPasswordStrength-strength-desc');
+    expect(result).toBeDefined();
+    expect(strengthBar.className).toBe('ReactPasswordStrength-strength-bar');
+    expect(description.className).toBe('ReactPasswordStrength-strength-desc');
   });
 
   it('passes inputProps to input elem', () => {
@@ -29,27 +26,26 @@ describe('ReactPasswordStrength', () => {
       value: 'value-test', // should be rejected
     };
 
-    renderer.render(<PassStrength inputProps={inputProps} />);
-    const result = renderer.getRenderOutput();
-    const { children } = result.props;
+    const render = renderIntoDocument(<PassStrength inputProps={inputProps} />);
+    const input = findRenderedDOMComponentWithTag(render, 'input');
 
-    expect(children[0].props.className).toBe('ReactPasswordStrength-input test');
-    expect(children[0].props.value).not.toBe('value-test');
+    expect(input.className).toBe('ReactPasswordStrength-input test');
+    expect(input.value).not.toBe('value-test');
   });
 
   it('accepts className prop', () => {
-    renderer.render(<PassStrength className="testClassName" />);
-    const result = renderer.getRenderOutput();
+    const render = renderIntoDocument(<PassStrength className="testClassName" />);
+    const result = findRenderedDOMComponentWithClass(render, 'ReactPasswordStrength');
 
-    expect(result.props.className).toContain("testClassName");
-    expect(result.props.className).toContain("ReactPasswordStrength");
+    expect(result.className).toContain("testClassName");
+    expect(result.className).toContain("ReactPasswordStrength");
   });
 
   it('accepts style prop', () => {
-    renderer.render(<PassStrength style={{ margin: "10px" }} />);
-    const result = renderer.getRenderOutput();
+    const render = renderIntoDocument(<PassStrength style={{ margin: "10px" }} />);
+    const result = findRenderedDOMComponentWithClass(render, 'ReactPasswordStrength');
 
-    expect(result.props.style.margin).toBe("10px");
+    expect(result.style.margin).toBe("10px");
   });
 });
 
