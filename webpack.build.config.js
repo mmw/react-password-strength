@@ -4,24 +4,27 @@ module.exports = {
     path: __dirname,
     filename: './dist/index.js',
     libraryTarget: 'umd',
-    library: 'ReactPasswordStrength'
+    library: 'ReactPasswordStrength',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
+        loader: 'babel-loader',
         include: /src/,
-        loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
-        }
+          presets: ['react', 'es2015', 'stage-2'],
+        },
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
-      }
-    ]
+        use: [ 'style-loader', 'css-loader' ],
+      },
+    ],
   },
   externals: {
     'react': 'react'
-  }
-}
+  },
+  resolve: {
+    extensions: ['.js'],
+  },
+};

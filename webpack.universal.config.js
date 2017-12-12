@@ -6,27 +6,30 @@ module.exports = {
     path: __dirname,
     filename: './dist/universal.js',
     libraryTarget: 'umd',
-    library: 'ReactPasswordStrength'
+    library: 'ReactPasswordStrength',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         include: /src/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
-        }
+          presets: ['react', 'es2015', 'stage-2'],
+        },
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-      }
-    ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader",
+        }),
+      },
+    ],
   },
   plugins: [
     new ExtractTextPlugin('./dist/style.css'),
   ],
   externals: {
-    'react': 'react'
-  }
-}
+    'react': 'react',
+  },
+};
