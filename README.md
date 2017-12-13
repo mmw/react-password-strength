@@ -4,8 +4,6 @@ A password strength indicator field using [zxcvbn](https://github.com/dropbox/zx
 
 _NOTE: zxcvbn is a large library it's recommended you split the codebase to manage bundle size._
 
-[Try it live!](https://mmw.github.io/react-password-strength/)
-
 ## Install in your project
 
 `npm install --save react-password-strength`
