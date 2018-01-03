@@ -2,9 +2,9 @@
 
 A password strength indicator field using [zxcvbn](https://github.com/dropbox/zxcvbn) to calculate a password strength score.
 
-[Try it live!](https://reactpasswordstrength.netlify.com)
+_Note: zxcvbn is a large library it's recommended you split the codebase to manage bundle size._
 
-_NOTE: zxcvbn is a large library it's recommended you split the codebase to manage bundle size._
+[Try it live!](https://reactpasswordstrength.netlify.com)
 
 ## Install in your project
 
