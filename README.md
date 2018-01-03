@@ -14,9 +14,7 @@ _Note: react/react-dom is a peer dependency. You should be using this in a React
 
 ## Run the example locally
 
-- `npm install`
-- `npm start`
-- open [http://localhost:8080/](http://localhost:8080/)
+See the [example repo](https://github.com/mmw/react-password-strength-example)
 
 ## Using the tool
 
