@@ -39,8 +39,8 @@ Using CommonJS require:
 `var ReactPasswordStrength = require('react-password-strength');`
 
 Using in a Universal JS App (server-side rendering):
-- `import ReactPasswordStrength from 'react-password-strength/dist/universal';`
-- Include default styling from `react-password-strength/dist/style.css`.
+- Import component from `react-password-strength/dist/universal`
+- Include default style from `react-password-strength/dist/style.css`.
 
 ### Props
 
