@@ -81,7 +81,7 @@ Using in a Universal JS App (server-side rendering):
 
 - Props to pass down to the `input` element of the component. Things like `name`, `id`, etc
 - Protected props: `className`, `onChange`, `ref`, `value`
-  - Passing in `className` will amend to the existing classes
+  - Passing in `className` will append to the existing classes
   - The remaining props will be ignored
 
 #### defaultValue
