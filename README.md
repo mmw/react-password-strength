@@ -38,7 +38,7 @@ If using ES6 imports:
 Using CommonJS require:
 `var ReactPasswordStrength = require('react-password-strength');`
 
-Using in a Universal JS App (server-side rendering):
+Using in a __Universal JS App__ (server-side rendering):
 - Import component from `react-password-strength/dist/universal`
 - Include default style from `react-password-strength/dist/style.css`.
 
