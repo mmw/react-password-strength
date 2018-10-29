@@ -14,6 +14,7 @@ export default class ReactPasswordStrength extends Component {
     inputProps: PropTypes.object,
     minLength: PropTypes.number,
     minScore: PropTypes.number,
+    namespaceClassName: PropTypes.string,
     scoreWords: PropTypes.array,
     style: PropTypes.object,
     tooShortWord: PropTypes.string,
@@ -26,6 +27,7 @@ export default class ReactPasswordStrength extends Component {
     defaultValue: '',
     minLength: 5,
     minScore: 2,
+    namespaceClassName: 'ReactPasswordStrength',
     scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
     tooShortWord: 'too short',
     userInputs: [],
@@ -89,17 +91,18 @@ export default class ReactPasswordStrength extends Component {
   render() {
     const { score, password, isValid } = this.state;
     const {
-      scoreWords,
-      inputProps,
       className,
+      inputProps,
+      minLength,
+      namespaceClassName,
+      scoreWords,
       style,
       tooShortWord,
-      minLength,
     } = this.props;
 
-    const inputClasses = [ 'ReactPasswordStrength-input' ];
+    const inputClasses = [ `${namespaceClassName}-input` ];
     const wrapperClasses = [
-      'ReactPasswordStrength',
+      namespaceClassName,
       className ? className : '',
       password.length > 0 ? `is-strength-${score}` : '',
     ];
@@ -130,8 +133,8 @@ export default class ReactPasswordStrength extends Component {
           value={password}
         />
 
-        <div className="ReactPasswordStrength-strength-bar" />
-        <span className="ReactPasswordStrength-strength-desc">{strengthDesc}</span>
+        <div className={`${namespaceClassName}-strength-bar`} />
+        <span className={`${namespaceClassName}-strength-desc`}>{strengthDesc}</span>
       </div>
     );
   }

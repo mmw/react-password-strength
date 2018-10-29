@@ -92,9 +92,14 @@ Using in a __Universal JS App__ (server-side rendering):
 
 - An array of strings that zxcvbn will treat as an extra dictionary.
 
+#### namespaceClassName (Default: 'ReactPasswordStrength')
+
+- Used to control the CSS class namespace. CSS classes created by RPS will be prepended with this string.
+- If you change this prop you have to provide all CSS and it's recommended to import RSP from the universal JS build (`react-password-strength/dist/universal`)
+
 ### Classes
 
-_All styling is applied with CSS classes to allow custom styling and overriding._
+_All styling is applied with CSS classes to allow custom styling and overriding. Note that if you change the `namespaceClassName` prop the below classnames will be affected._
 - `ReactPasswordStrength` - namespace class and component wrapper
 - `is-strength-{0-4}` - modifier class indicating password strength
 - `ReactPasswordStrength-input` - password input field
