@@ -5,6 +5,7 @@ import zxcvbn from 'zxcvbn';
 import PropTypes from 'prop-types';
 
 const isTooShort = (password, minLength) => password.length < minLength;
+const isTooLong = (password, maxLength) => password.length > maxLength;
 
 export default class ReactPasswordStrength extends Component {
   static propTypes = {
@@ -13,6 +14,7 @@ export default class ReactPasswordStrength extends Component {
     defaultValue: PropTypes.string,
     inputProps: PropTypes.object,
     minLength: PropTypes.number,
+    maxLength: PropTypes.number,
     minScore: PropTypes.number,
     namespaceClassName: PropTypes.string,
     scoreWords: PropTypes.array,
@@ -25,10 +27,12 @@ export default class ReactPasswordStrength extends Component {
     changeCallback: null,
     className: '',
     defaultValue: '',
+    maxLength: 1000,
     minLength: 5,
     minScore: 2,
     namespaceClassName: 'ReactPasswordStrength',
     scoreWords: ['weak', 'weak', 'okay', 'good', 'strong'],
+    tooLongWord: 'too long',
     tooShortWord: 'too short',
     userInputs: [],
   }
@@ -64,7 +68,7 @@ export default class ReactPasswordStrength extends Component {
   }
 
   handleChange = () => {
-    const { changeCallback, minScore, userInputs, minLength } = this.props;
+    const { changeCallback, minScore, userInputs, minLength, maxLength } = this.props;
     const password = this.reactPasswordStrengthInput.value;
 
     let score = 0;
@@ -72,13 +76,13 @@ export default class ReactPasswordStrength extends Component {
 
     // always sets a zero score when min length requirement is not met
     // avoids unnecessary zxcvbn computations (CPU intensive)
-    if (isTooShort(password, minLength) === false) {
+    if (isTooShort(password, minLength) === false && isTooLong(password, maxLength) === false) {
       result = zxcvbn(password, userInputs);
       score = result.score;
     }
 
     this.setState({
-      isValid: score >= minScore,
+      isValid: score >= minScore && !isTooLong(password, maxLength),
       password,
       score,
     }, () => {
@@ -93,10 +97,12 @@ export default class ReactPasswordStrength extends Component {
     const {
       className,
       inputProps,
+      maxLength,
       minLength,
       namespaceClassName,
       scoreWords,
       style,
+      tooLongWord,
       tooShortWord,
     } = this.props;
 
@@ -106,11 +112,11 @@ export default class ReactPasswordStrength extends Component {
       className ? className : '',
       password.length > 0 ? `is-strength-${score}` : '',
     ];
-    const strengthDesc = (
-      isTooShort(password, minLength)
-      ? tooShortWord
-      : scoreWords[score]
-    );
+
+    let strengthDesc = scoreWords[score];
+
+    if (isTooShort(password, minLength)) strengthDesc = tooShortWord;
+    if (isTooLong(password, maxLength)) strengthDesc = tooLongWord;
 
     if (isValid === true) {
       inputClasses.push('is-password-valid');

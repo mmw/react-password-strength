@@ -143,6 +143,20 @@ describe('ReactPasswordStrength Events', () => {
     expect(result.state.isValid).toBe(false);
   })
 
+  it('invalidates too long passwords', () => {
+    const result = renderIntoDocument(<PassStrength maxLength={9} />);
+    let input = findRenderedDOMComponentWithClass(result, 'ReactPasswordStrength-input');
+
+    // this normally passes but must fail because it exceeds the max length
+    input.value = '4mf2df32df52df3';
+
+    Simulate.change(input);
+
+    expect(result.state.password).toBe('4mf2df32df52df3');
+    expect(result.state.score).toBe(0);
+    expect(result.state.isValid).toBe(false);
+  })
+
   it('adds strings in userInputs to zxcvbn dictionary', () => {
     const knownKeyword = 'longwordthatiscommon';
     const result = renderIntoDocument(<PassStrength minScore={2} userInputs={[knownKeyword]} />);

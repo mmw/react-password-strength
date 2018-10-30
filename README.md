@@ -56,6 +56,11 @@ Using in a __Universal JS App__ (server-side rendering):
 
 - Minimum password length acceptable for password to be considered valid
 
+#### maxLength (Default: 1000)
+
+- Maximum password length acceptable for password to be considered valid
+- Used to prevent DDOS attacks with exceptionally long passwords meant to overload servers with work.
+
 #### minScore (Default: 2)
 
 - Minimum score acceptable for password to be considered valid
@@ -69,6 +74,10 @@ Using in a __Universal JS App__ (server-side rendering):
 #### tooShortWord (Default: 'too short')
 
 - A string to describe when password is too short (based on minLength prop).
+
+#### tooLongWord (Default: 'too long')
+
+- A string to describe when password is too long (based on maxLength prop).
 
 #### changeCallback
 

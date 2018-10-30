@@ -28,6 +28,8 @@ class App extends React.Component {
         <ReactPasswordStrength
           ref={ref => this.ReactPasswordStrength = ref}
           minLength={6}
+          maxLength={10}
+          tooLongWord="woah there"
           inputProps={inputProps}
           changeCallback={this.changeCallback}
         />
@@ -40,7 +42,8 @@ class App extends React.Component {
 
         <ReactPasswordStrength
           minLength={6}
-          inputProps={inputProps}
+          maxLength={10}
+          inputProps={{ ...inputProps, id: "inputPassword2" }}
           defaultValue="defaultValue"
         />
       </div>
