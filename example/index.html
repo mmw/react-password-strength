@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>React Password Strength Example</title>
+
+    <style media="screen">
+      body {
+        background: #e6e6e6;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      #example {
+        background: #fff;
+        margin: 50px auto 30px;
+        min-height: 250px;
+        padding: 45px 75px;
+        width: 500px;
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      button {
+        background: #fff;
+        border: none;
+        color: #6e6e6e;
+        font-size: 16px;
+        padding: 5px 8px;
+        margin-top: 10px;
+        opacity: 1;
+        transition: opacity 250ms ease-in-out;
+      }
+
+      button:hover,
+      button:focus {
+        cursor: pointer;
+        outline: none;
+      }
+
+      button:disabled {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="example"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
